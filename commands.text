@@ -1,0 +1,29 @@
+npm start
+npx create-expo-app Project004    
+npm run reset-project      
+
+npx react-native init RollTheDice
+
+
+ explorer .
+ code .
+ adb devices
+
+ gradle
+ chocolate
+ yarn
+ metro builder
+ 
+
+
+Create a new project
+ - npm uninstall -g react-native-cli @react-native-community/cli
+ - npx @react-native-community/cli@latest init AwesomeProject
+
+ - or npx @react-native-community/cli@X.XX.X init AwesomeProject --version X.XX.X
+
+start the project
+ - npx react-native run-android
+ - npm run android
+ - npx react-native start
+ - npx react-native doctor
