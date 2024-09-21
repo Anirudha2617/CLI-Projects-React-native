@@ -10,8 +10,11 @@
     "test": "jest"
   },
   "dependencies": {
+    "formik": "^2.4.6",
     "react": "18.3.1",
     "react-native": "0.75.2",
+    "react-native-bounceable": "^0.2.1",
+    "react-native-bouncy-checkbox": "^4.1.2",
     "yup": "^1.4.0"
   },
   "devDependencies": {
