@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -12,31 +12,46 @@ import {
 } from 'react-native';
 import Elecvatedcards from './components/Elecvatedcards';
 import Sidebar from './components/Sidebar';
-import Flex from './components/flex';
+import Flex from './components/Sidebar_2';
+import DirectionLayout from './components/Flexdirection';
+import JustifyContentBasics from './components/justify_content';
+import Flatcards from './components/flatcards';
+import PreviewLayout from './components/Sidebar_2';
 
 function App(): React.JSX.Element {
-  return (
-    <Flex/>
-    // <SafeAreaView style={styles.main_view}>
-    //   <View style={styles.sidebar}>
-    //     <Sidebar />
-    //   </View>
+  const [justifyContent, setJustifyContent] = useState('flex');
+  const [Page, setPage] = useState('flex-start');
 
-    //   <View style={styles.side_view}>
-    //     <View style={styles.heading_center}>
-    //       <Text style={styles.heading_center_text}>Shree Ganesha</Text>
-    //     </View>
-    //     <SafeAreaView>
-    //       <Image
-    //         id="Src Img"
-    //         style={styles.logo}
-    //         source={require('./assets/chatting.jpg')}
-    //       />
-    //       <Elecvatedcards />
-    //     </SafeAreaView>
-    //   </View>
-    // </SafeAreaView>
-  );
+  if (justifyContent === 'flex-start') {
+    return <JustifyContentBasics />;
+  } else {
+    return (
+      <SafeAreaView style={styles.main_view}>
+        <View style={styles.sidebar}>
+          <PreviewLayout
+            label="MENU"
+            selectedValue={Page}
+            values={[
+              ['menu', require('../assets/chatting.jpg')],
+              ['navigate', require('../assets/navigate.jpg')],
+              ['profile', require('../assets/chatting.jpg')],
+              ['favorites', require('../assets/chatting.jpg')],
+              ['settings', require('../assets/chatting.jpg')],
+              ['logout', require('../assets/chatting.jpg')],
+              ['about', require('../assets/chatting.jpg')],
+            ]}
+            setSelectedValue={setPage}></PreviewLayout>
+        </View>
+
+        <View style={styles.side_view}>
+          <View style={styles.heading_center}>
+            <Text style={styles.heading_center_text}>Shree Ganesha</Text>
+          </View>
+          <Elecvatedcards />
+        </View>
+      </SafeAreaView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -49,7 +64,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   sidebar: {
-    width: 35,
+    width: 45,
     backgroundColor: 'rgb(24, 24, 24)',
     borderColor: 'rgb(192, 204, 204)',
     borderRightWidth: 0.7,
