@@ -1,15 +1,20 @@
 import React, {useState} from 'react';
-import {View, TouchableOpacity, Text, StyleSheet, Image, ImageSourcePropType} from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  Image,
+  ImageSourcePropType,
+} from 'react-native';
 import type {PropsWithChildren} from 'react';
-
 
 type PreviewLayoutProps = PropsWithChildren<{
   label: string;
-  values: [string,ImageSourcePropType][];
+  values: [string, ImageSourcePropType][];
   selectedValue: string;
   setSelectedValue: (value: string) => void;
 }>;
-
 
 const PreviewLayout = ({
   label,
@@ -24,14 +29,12 @@ const PreviewLayout = ({
       {values.map(value => (
         <TouchableOpacity
           key={value[0]}
-          onPress={() => setSelectedValue(value[0])}
-          >
-        <Image
-          id="Src Img"
-          style={styles.logo}
-          source={value[1]}
-        />
-
+          onPress={() => {
+            setSelectedValue(value[0]);
+            console.log(value[0]);
+          }}
+          style={[selectedValue === value[0] && styles.fade]}>
+          <Image id="Src Img" style={[styles.logo]} source={value[1]} />
         </TouchableOpacity>
       ))}
     </View>
@@ -90,6 +93,12 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     borderColor: '#ccc',
     borderWidth: 1,
+  },
+  fade: {
+    opacity: 0.5,
+    shadowColor: '#000',
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
   },
 });
 

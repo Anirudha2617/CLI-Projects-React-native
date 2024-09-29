@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, TouchableOpacity, Text,  Image, StyleSheet} from 'react-native';
+import {View, TouchableOpacity, Text, Image, StyleSheet} from 'react-native';
 import type {PropsWithChildren} from 'react';
 
 const JustifyContentBasics = () => {
@@ -22,10 +22,10 @@ const JustifyContentBasics = () => {
       <View style={[styles.box, {backgroundColor: 'skyblue'}]} />
       <View style={[styles.box, {backgroundColor: 'steelblue'}]} />
       <Image
-            id="Src Img"
-            style={styles.logo}
-            source={require('../assets/chatting.jpg')}
-          />
+        id="Src Img"
+        style={styles.logo}
+        source={require('../assets/chatting.jpg')}
+      />
     </PreviewLayout>
   );
 };
@@ -111,13 +111,13 @@ const styles = StyleSheet.create({
   logo: {
     height: 30,
     width: 30,
-    
+
     marginTop: 5,
     marginBottom: 5,
 
-    borderRadius:2,
-    borderColor:'#ccc',
-    borderWidth:1,
+    borderRadius: 2,
+    borderColor: '#ccc',
+    borderWidth: 1,
   },
 });
 

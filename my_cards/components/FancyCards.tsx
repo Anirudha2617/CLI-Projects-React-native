@@ -5,69 +5,34 @@ import {
   SafeAreaView,
   Image,
   ScrollView,
+  ImageSourcePropType,
 } from 'react-native';
-import React from 'react';
+import React  from 'react';
 
-export default function FancyCards() {
+type Props = {
+  label: string;
+  items: [ImageSourcePropType, string, string, string][];
+};
+
+export default function FancyCards({label, items}: Props) {
   return (
     <View style={styles.mainview}>
-      <Text style={styles.headingtext}>FancyCards</Text>
-      <ScrollView horizontal={true} style={styles.container}>
-        <View style={[styles.card]}>
-          <Image
-            id="Src Img"
-            style={styles.stretch}
-            source={{
-              uri: 'E:///CLIPROJECTS/Cards/assets/images/react-logo.png',
-            }}
-          />
-          <ScrollView style={styles.contentscroll}>
-            <Text id="Heading text" style={styles.headding_2}>
-              Red
-            </Text>
-            <Text style={styles.content}>This is the content text.</Text>
-            <Text style={styles.footer}> This is footer text </Text>
-          </ScrollView>
-        </View>
-        <View style={[styles.card]}>
-          <Image
-            id="Src Img"
-            style={styles.stretch}
-            source={{
-              uri: 'E:///CLIPROJECTS/Cards/assets/images/react-logo.png',
-            }}
-          />
-          <ScrollView style={styles.contentscroll}>
-            <Text id="Heading text" style={styles.headding_2}>
-              Red
-            </Text>
-            <Text style={styles.content}>
-              This is the content text.And i am glad to be able to do it myself.
-            </Text>
-            <Text style={styles.footer}> This is footer text </Text>
-          </ScrollView>
-        </View>
-        <View style={[styles.card]}>
-          <Image
-            id="Src Img"
-            style={styles.stretch}
-            source={{
-              uri: 'E:///CLIPROJECTS/Cards/assets/images/react-logo.png',
-            }}
-          />
-          <ScrollView style={styles.contentscroll}>
-            <Text id="Heading text" style={styles.headding_2}>
-              Red
-            </Text>
-            <Text style={styles.content}>This is the content text.</Text>
-            <Text style={styles.content}>This is the content text.</Text>
-            <Text style={styles.content}>This is the content text.</Text>
-            <Text style={styles.content}>This is the content text.</Text>
-            <Text style={styles.content}>This is the content text.</Text>
-            <Text style={styles.content}>This is the content text.</Text>
-            <Text style={styles.content}>This is the content text.</Text>
-            <Text style={styles.footer}> This is footer text </Text>
-          </ScrollView>
+      <Text style={styles.headingtext}>{label}</Text>
+
+      <ScrollView horizontal={true} contentContainerStyle={{ justifyContent: 'center' }}>
+        <View style={styles.container}>
+          {items.map(([image, heading, content, footer], index) => (
+            <View style={[styles.card]} key={index}>
+              <Image id="Src Img" style={styles.stretch} source={image} />
+              <ScrollView style={styles.contentscroll}>
+                <Text id="Heading text" style={styles.headding_2}>
+                  {heading}
+                </Text>
+                <Text style={styles.content}>{content}</Text>
+                <Text style={styles.footer}> {footer} </Text>
+              </ScrollView>
+            </View>
+          ))}
         </View>
       </ScrollView>
     </View>
@@ -76,15 +41,14 @@ export default function FancyCards() {
 
 const styles = StyleSheet.create({
   mainview: {
-    flex: 1,
-    alignItems: 'center',
     paddingTop: 10,
   },
   container: {
-    flex: 1,
     flexDirection: 'row',
     padding: 10,
     backgroundColor: 'rgb(31, 31, 31)',
+    alignContent: 'center',
+    justifyContent: 'center',
   },
   headingtext: {
     fontSize: 25,
@@ -111,6 +75,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     paddingTop: 10,
     color: 'rgb(229, 229, 229)',
+    justifyContent: 'flex-end',
   },
   contentscroll: {
     flex: 1,
@@ -121,7 +86,7 @@ const styles = StyleSheet.create({
   card: {
     fontSize: 15,
     flex: 1,
-    height: 200,
+    height: 230,
     width: 200,
 
     alignItems: 'center',
@@ -138,7 +103,6 @@ const styles = StyleSheet.create({
 
   stretch: {
     height: 100,
-    width: 100,
-    resizeMode: 'stretch',
+    width: 160,
   },
 });
